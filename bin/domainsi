@@ -1,0 +1,54 @@
+#!/bin/bash
+
+DIR="$HOME/.ipi"
+
+source "$DIR/lib/colors.sh"
+source "$DIR/lib/functions.sh"
+
+if [ -t 0 ]
+then
+    domain="$1"
+    flags="$2"
+
+    if [[ "$domain" == "" ]]
+    then
+        echo_error "No domain specified..."
+        exit
+    fi
+
+    log "Queried for $domain"
+
+    if [[ "$flags" != ""  ]]
+    then
+        domains "$domain"| jq -r "$flags" 
+    else
+        domains "$domain"| jq -C "$flags"
+    fi
+else
+    while read -r line
+    do
+        domain=$(echo $line | cut -d " " -f 2)
+        flags="$1"
+
+        if [[ "$domain" == "" ]]
+        then
+            echo_error "No domain specified..."
+            exit
+        fi
+
+        log "Queried for $domain"
+
+        if [[ "$flags" != ""  ]]
+        then
+            domains "$domain"| jq -r "$flags" 
+        else
+            domains "$domain"| jq -C "$flags"
+        fi
+    done
+fi
+
+
+
+
+
+

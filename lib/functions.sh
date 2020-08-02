@@ -22,6 +22,10 @@ info() {
     curl -s "$url/$1?token=$token"
 }
 
+domains() {
+    curl -s "$url/domains/$1?token=$token"
+}
+
 hostinfo() {
     curl -s "https://host.io/api/web/$1?token=$token"
 }
