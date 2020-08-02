@@ -7,8 +7,10 @@ wget -O /tmp/install https://raw.githubusercontent.com/pry0cc/ipi/master/bin/ipt
 /tmp/install <your token>
 ```
 
-# Basic Usage
+# Example
+![](https://i.imgur.com/6QLIlCl.png)
 
+# Basic Usage
 
 Look up a single IP
 ```
