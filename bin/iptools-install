@@ -6,6 +6,7 @@ deps=(git jq curl) # TODO - write a checker to download deps if they dont exist
 
 if [[ "$1" != "" ]]
 then
+    key="$1"
     if [[ -f "$DIR/.git/config" ]]
     then
         echo "Already installed, updating..."
