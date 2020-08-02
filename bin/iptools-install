@@ -15,7 +15,7 @@ then
     fi
     
     echo "Writing config..."
-    echo "{\"token\":\"$key\"}" | jq > $CONFIG
+    echo "{\"token\":\"$key\"}" > $CONFIG
     
     newpath="$PATH:$DIR/bin"
     export PATH="$newpath"
