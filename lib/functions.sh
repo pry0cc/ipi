@@ -18,7 +18,7 @@ log() {
     echo "LOG: $(date): $1" >> $log
 }
 
-iinfo() {
+info() {
     curl -s "$url/$1?token=$token"
 }
 
