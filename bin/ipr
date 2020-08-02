@@ -1,0 +1,50 @@
+#!/bin/bash
+
+DIR="$HOME/work/ipinfo-tools"
+
+source "$DIR/lib/colors.sh"
+source "$DIR/lib/functions.sh"
+
+
+if [ -t 0 ]; then
+asn="$1"
+flags="$2"
+
+if [[ "$asn" == "" ]]
+then
+    echo_error "No ASN specified..."
+    exit
+fi
+
+log "Queried for $asn"
+
+if [[ "$flags" != ""  ]]
+then
+    asn "$asn"| jq -r "$flags" 
+else
+    asn "$asn"| jq -C "$flags"
+fi
+else
+    while read -r line ; do
+        asn=$(echo  $line | cut -d " " -f 2)
+flags="$1"
+
+if [[ "$asn" == "" ]]
+then
+    echo_error "No ASN specified..."
+    exit
+fi
+
+log "Queried for $asn"
+
+if [[ "$flags" != ""  ]]
+then
+    asn "$asn"| jq -r "$flags" 
+else
+    asn "$asn"| jq -C "$flags"
+fi       
+    done
+fi
+
+
+

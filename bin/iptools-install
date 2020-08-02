@@ -1,0 +1,14 @@
+#!/bin/bash
+
+DIR="$HOME/.ipi"
+CONFIG="$DIR/config.json"
+deps=(git jq curl) # TODO - write a checker to download deps if they dont exist
+
+
+echo "Please enter your ipinfo api key..."
+echo -n "Key >> "
+read key
+
+#git clone https://github.com/pry0cc/ipi $DIR
+
+echo "{\"token\":\"$key\"}" | jq > $CONFIG
