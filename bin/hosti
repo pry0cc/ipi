@@ -1,0 +1,54 @@
+#!/bin/bash
+
+DIR="$HOME/.ipi"
+
+source "$DIR/lib/colors.sh"
+source "$DIR/lib/functions.sh"
+
+if [ -t 0 ]
+then
+    host="$1"
+    flags="$2"
+
+    if [[ "$host" == "" ]]
+    then
+        echo_error "No Host specified..."
+        exit
+    fi
+
+    log "Queried for $host"
+
+    if [[ "$flags" != ""  ]]
+    then
+        hostinfo "$host"| jq -r "$flags" 
+    else
+        hostinfo "$host"| jq -C "$flags"
+    fi
+else
+    while read -r line
+    do
+        host=$(echo $line | cut -d " " -f 2)
+        flags="$1"
+
+        if [[ "$host" == "" ]]
+        then
+            echo_error "No Host specified..."
+            exit
+        fi
+
+        log "Queried for $host"
+
+        if [[ "$flags" != ""  ]]
+        then
+            hostinfo "$host"| jq -r "$flags" 
+        else
+            hostinfo "$host"| jq -C "$flags"
+        fi
+    done
+fi
+
+
+
+
+
+

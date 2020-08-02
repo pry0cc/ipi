@@ -18,8 +18,12 @@ log() {
     echo "LOG: $(date): $1" >> $log
 }
 
-info() {
+iinfo() {
     curl -s "$url/$1?token=$token"
+}
+
+hostinfo() {
+    curl -s "https://host.io/api/web/$1?token=$token"
 }
 
 asn() {
