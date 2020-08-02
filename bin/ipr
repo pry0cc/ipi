@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DIR="$HOME/work/ipinfo-tools"
+DIR="$HOME/.ipi"
 
 source "$DIR/lib/colors.sh"
 source "$DIR/lib/functions.sh"
