@@ -2,6 +2,9 @@
 I wrote this utility to help me more efficiently utilize the ipinfo.io API - especially the premium aspects.
 
 # Installation
+
+Sign in with Google or Github to obtain a free API key with 50k requests!
+https://ipinfo.io/account
 ```
 wget -O /tmp/install https://raw.githubusercontent.com/pry0cc/ipi/master/bin/iptools-install && chmod +x /tmp/install
 /tmp/install <your token>
