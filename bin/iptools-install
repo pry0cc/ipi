@@ -4,11 +4,27 @@ DIR="$HOME/.ipi"
 CONFIG="$DIR/config.json"
 deps=(git jq curl) # TODO - write a checker to download deps if they dont exist
 
+if [[ "$1" != "" ]]
+then
+    if [[ -f "$DIR/.git/config" ]]
+    then
+        echo "Already installed, updating..."
+        cd $DIR && git pull
+    else
+        git clone https://github.com/pry0cc/ipi $DIR
+    fi
+    
+    echo "Writing config..."
+    echo "{\"token\":\"$key\"}" | jq > $CONFIG
+    
+    newpath="$PATH:$DIR/bin"
+    export PATH="$newpath"
 
-echo "Please enter your ipinfo api key..."
-echo -n "Key >> "
-read key
+    echo -e "Please add the following to your .bashrc/.zshrc configuration:\nexport PATH=\"$newpath\""
+else
+    echo "Please supply a token, iptools-install <token>"
+    echo "You can obtain a token from https://ipinfo.io/account"
+    echo "(You can login with google or github)"
+fi
 
-#git clone https://github.com/pry0cc/ipi $DIR
 
-echo "{\"token\":\"$key\"}" | jq > $CONFIG
