@@ -25,7 +25,7 @@ then
 else
     echo "Please supply a token, iptools-install <token>"
     echo "You can obtain a token from https://ipinfo.io/account"
-    echo "(You can login with google or github)"
+    echo "(You can login with Google or Github)"
 fi
 
 
